@@ -7,7 +7,7 @@ Disconnects all ugens from the master bus and stops all sequencers from runnning
 ### gibberish.init ###
 The `init` method creates an `AudioContext` object, a `ScriptProcessor Node`, and connects the output of the node to the `destination` property of the AudioContext. This single line should be enough to start a Gibberish session (assuming the Gibberish library has been properly included from your HTML file).  
 
-*** memorySize *** &nbsp; *int* &nbsp; Default:44100 * 60 * 20 (twenty minutes at 44.1 kHz). This determines the size of the memory block that Gibberish will use for all ugens. If you use a lot of samples (more than twenty minutes worth) you may want to increase this size.
+**memorySize**&nbsp; *int* &nbsp; Default:44100 * 60 * 20 (twenty minutes at 44.1 kHz). This determines the size of the memory block that Gibberish will use for all ugens. If you use a lot of samples (more than twenty minutes worth) you may want to increase this size.
 
 ### gibberish.print ###
 Prints the current master audio callback to the console.
@@ -15,10 +15,11 @@ Prints the current master audio callback to the console.
 ### gibberish.export ###
 By default, the Gibberish library is contained within the global `Gibberish` object (or whatever variable you import it into using browserify / require.js etc). However, you can easily export the Gibberish namespace to another object (for example, the `window` object) for easier API access. 
 
-*** target *** &nbsp; *object*. The object to export the Gibberish namespace to.  
-*** shouldExportGenish *** &nbsp; *boolean* &nbsp; Default:false. Determines whether or not the lower-level unit generators found in genish.js are also exported to the target object. Note that many variables names in genish and Gibberish are only differentiated by lowercase vs uppercase letters... for example, Gibberish has `Add`, `ADSR`, and `Mod` ugens, while genish has `add`, `adsr`, and `mod`. 
+**target** &nbsp; *object* &nbsp;  The object to export the Gibberish namespace to.  
 
-#### Propertie s####
+**shouldExportGenish** &nbsp; *boolean* &nbsp; Default:false. Determines whether or not the lower-level unit generators found in genish.js are also exported to the target object. Note that many variables names in genish and Gibberish are only differentiated by lowercase vs uppercase letters... for example, Gibberish has `Add`, `ADSR`, and `Mod` ugens, while genish has `add`, `adsr`, and `mod`. 
+
+#### Properties ####
 ### gibberish.debug ###
 *boolean* Default:false. When this value is set to true, callbacks will be printed to the console whenever they are generated.
 ### gibberish.output ###
@@ -230,9 +231,9 @@ Gibberish.Sequencer({
 ```
 
 #### Properties ####
-### complex.pregain###
+### complex.pregain ###
 *float* default: 4. This controls the amount of gain applied to the instrument's oscillator before it is fed into the wavefolder. This is the primary driver of the oscillator's final timbre.
-### complex.postgain###
+### complex.postgain ###
 *float* default: 1. This determines the amount of gain applied to the signal after folding and before filtering.
 ### complex.antialias ###
 *boolean* default: false. If this property is true, both the carrier and modulator will use higher quality (and more computationally expensive) anti-aliasing oscillators.
@@ -246,7 +247,7 @@ Gibberish.Sequencer({
 *int* default: 22050. The length of the decay portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled.
 ### complex.sustain ###
 *int* default: 44100. The length of the sustain portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. Note that the sustain will last until the synth's `synth.env.release()` method is triggered if the synth's `triggerRelease` property is set to `true`.
-###complex.sustainLevel###
+### complex.sustainLevel ###
 *float* default: .6. The gain stage of the sustain portion of the synth's envelope. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. Sustain and release are only used if the `useADSR` property of the synth is set to be true.
 ### complex.release ###
 *int* default: 22050. The length of the decay portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled.
@@ -346,7 +347,7 @@ Gibberish.Sequencer({
 *int* default: 22050. The length of the decay portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled.
 ### fm.sustain ###
 *int* default: 44100. The length of the sustain portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. Note that the sustain will last until the synth's `synth.env.release()` method is triggered if the synth's `triggerRelease` property is set to `true`.
-###fm.sustainLevel###
+### fm.sustainLevel ###
 *float* default: .6. The gain stage of the sustain portion of the synth's envelope. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. Sustain and release are only used if the `useADSR` property of the synth is set to be true.
 ### fm.release ###
 *int* default: 22050. The length of the decay portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled.
@@ -467,11 +468,11 @@ kick.note( 90 )
 ```
 
 #### Properties ####
-###kick.decay###
+### kick.decay ###
 *float* range: 0-1, default: .9. This value controls the decay length of each note.
-###kick.gain###
+### kick.gain ###
 *float* default: .25. This value controls the loudness of each note.
-###kick.tone###
+### kick.tone ###
 *float* range: 0-1, default: .25. This value controls the high frequency content (the 'click') at the start of each kick drum trigger. 
 
 Monosynth
@@ -499,36 +500,36 @@ Gibberish.Sequencer({
 }).start()
 ```
 
-####Properties####
+#### Properties ####
 
-###monosynth.antialias###
+### monosynth.antialias ###
 *boolean* default: false. If this property is true, both the carrier and modulator will use higher quality (and more computationally expensive) anti-aliasing oscillators.
 
-###monosynth.attack###
+### monosynth.attack ###
 *int* default: 44. The length of the attack portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. 
-###monosynth.decay###
+### monosynth.decay ###
 *int* default: 22050. The length of the decay portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled.
-###monosynth.sustain###
+### monosynth.sustain ###
 *int* default: 44100. The length of the sustain portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. Note that the sustain will last until the synth's `synth.env.release()` method is triggered if the synth's `triggerRelease` property is set to `true`.
-###monosynth.sustainLevel###
+### monosynth.sustainLevel ###
 *float* default: .6. The gain stage of the sustain portion of the synth's envelope. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. Sustain and release are only used if the `useADSR` property of the synth is set to be true.
-###monosynth.release###
+### monosynth.release ###
 *int* default: 22050. The length of the decay portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled.
-###monosynth.useADSR###
+### monosynth.useADSR ###
 *bool* default: false. Determines whether a synth uses a two stage (AD) or four-stage (ADSR) envelope.
-###monosynth.triggerRelease###
+### monosynth.triggerRelease ###
 *bool* default: false. Assuming a synth's `useADSR` property is also set to `true`, a value of `true` on this property will continue the sustain stage of an ADSR indefinitely until the synth's envelope receives a release  message (i.e `synth.env.release()`)
-###monosynth.gain###
+### monosynth.gain ###
 *float* default: 1. A scalar applied to the output of the synth. It is modulated by the synth's envelope.
-###monosynth.waveform###
+### monosynth.waveform ###
 *string* default: 'sine'. Controls the waveform of the three monosynth oscillators. Choose between 'sine','saw','square', and 'pwm'.
-###monosynth.detune2###
+### monosynth.detune2 ###
 *float* default: 1.01. Determines the frequency of the second oscillator by adding the frequency of the first multiplied by this value, or `osc2.frequency = osc1.frequency + ( osc1.frequency * detune2 )`.
-###monosynth.detune3###
+### monosynth.detune3 ###
 *float* default: 2,99. Determines the frequency of the third oscillator by adding the frequency of the first multiplied by this value, or `osc3.frequency = osc1.frequency + ( osc1.frequency * detune3 )`.
-###monosynth.panVoices###
+### monosynth.panVoices ###
 *boolean* default: false. If true, the synth will expose a pan property for stereo panning; otherwise, the synth is mono.
-###monosynth.pan###
+### monosynth.pan ###
 *float* range: 0-1, default: .5. If the `panVoices` property of the synth is `true`, this property will determine the position of the synth in the stereo spectrum. `0` = left, `.5` = center, `1` = right. 
 ### monosynth.filterType ###
 *int* default: 0. Select a filter type. `0` - no filter.  `1` - Zero-delay (aka virtual analog) 4-pole Moog-style ladder filter. `2` - Zero-delay (aka virtual analog) resonant diode filter, modeled after the TB-303. `3` - State variable filter with multiple modes. `4` - Biquad filter with multiple modes. `5` - 'classic' Gibberish 4-pole resonant filter.
@@ -572,16 +573,16 @@ rhodes.onload = function() {
 }
 ```
 
-####Properties####
-###sampler.filename###
+#### Properties ####
+### sampler.filename ###
 *string* This must be passed in the properties dictionary handed to the constructor and point to a file on a web server that you have access to or that permits CORS operations.
-###sampler.loops###
+### sampler.loops ###
 *boolean* default: false. If this value is true, the sample will repeat playback continuously.
-###sampler.gain###
+### sampler.gain ###
 *float* default: .25. This value controls the loudness of each note.
-###sampler.start###
+### sampler.start ###
 *int* default: 0. The sample offset to begin playback at.
-###sampler.end###
+### sampler.end ###
 *int* default: sample.length. The last sample to play in the audiofile.
 
 Snare
@@ -599,14 +600,14 @@ snare.tune = -.25
 snare.trigger( .5 )
 ```
 
-####Properties####
-###snare.decay###
+#### Properties ####
+### snare.decay ###
 *float* range: 0-1, default: .1. This value controls the decay length of each snare strike, ranging from 0 to 2 seconds.
-###snare.gain###
+### snare.gain ###
 *float* default: .25. This value controls the loudness of each note.
-###snare.snappy###
+### snare.snappy ###
 *float* range: 0-?, default: 1. A scalar controlling the amount of noise in the overall snare output.
-###snare.tune###
+### snare.tune ###
 *float* range: -.5-2, default: 0. This value modifies the tuning of the two bandpass filters and the highpass filter used in the snare instrument.
 
 Synth
@@ -635,31 +636,31 @@ Gibberish.Sequencer({
 }).start()
 ```
 
-####Properties####
+#### Properties ####
 
-###synth.antialias###
+### synth.antialias ###
 *boolean* default: false. If this property is true, both the carrier and modulator will use higher quality (and more computationally expensive) anti-aliasing oscillators.
-###synth.attack###
+### synth.attack ###
 *int* default: 44. The length of the attack portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. 
-###synth.decay###
+### synth.decay ###
 *int* default: 22050. The length of the decay portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled.
-###synth.sustain###
+### synth.sustain ###
 *int* default: 44100. The length of the sustain portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. Note that the sustain will last until the synth's `synth.env.release()` method is triggered if the synth's `triggerRelease` property is set to `true`.
-###synth.sustainLevel###
+### synth.sustainLevel ###
 *float* default: .6. The gain stage of the sustain portion of the synth's envelope. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled. Sustain and release are only used if the `useADSR` property of the synth is set to be true.
-###synth.release###
+### synth.release ###
 *int* default: 22050. The length of the decay portion of the synth's envelope measured in samples. The envelope modulates amplitude, the index property, and the filter cutoff frequency (if the filter is enabled.
-###synth.useADSR###
+### synth.useADSR ###
 *bool* default: false. Determines whether a synth uses a two stage (AD) or four-stage (ADSR) envelope.
-###synth.triggerRelease###
+### synth.triggerRelease ###
 *bool* default: false. Assuming a synth's `useADSR` property is also set to `true`, a value of `true` on this property will continue the sustain stage of an ADSR indefinitely until the synth's envelope receives a release  message (i.e `synth.env.release()`)
-###synth.gain###
+### synth.gain ###
 *float* default: 1. A scalar applied to the output of the synth. It is modulated by the synth's envelope.
-###synth.waveform###
+### synth.waveform ###
 *string* default: 'sine'. Controls the waveform of the three monosynth oscillators. Choose between 'sine','saw','square', and 'pwm'.
-###synth.panVoices###
+### synth.panVoices ###
 *boolean* default: false. If true, the synth will expose a pan property for stereo panning; otherwise, the synth is mono.
-###synth.pan###
+### synth.pan ###
 *float* range: 0-1, default: .5. If the `panVoices` property of the synth is `true`, this property will determine the position of the synth in the stereo spectrum. `0` = left, `.5` = center, `1` = right. 
 ### synth.filterType ###
 *int* default: 0. Select a filter type. `0` - no filter.  `1` - Zero-delay (aka virtual analog) 4-pole Moog-style ladder filter. `2` - Zero-delay (aka virtual analog) resonant diode filter, modeled after the TB-303. `3` - State variable filter with multiple modes. `4` - Biquad filter with multiple modes. `5` - 'classic' Gibberish 4-pole resonant filter.
@@ -705,12 +706,12 @@ crush = Gibberish.effects.BitCrusher({
 syn.note( 220 )
 ```
 
-####Properties####
-###bitcrusher.input###
+#### Properties ####
+### bitcrusher.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###bitcrusher.sampleRate###
+### bitcrusher.sampleRate ###
 *float* range: 0-1, default: .5. Re-samples the input unit generator at a lower rate. A value of .5 (the default) means that every other sample will be sampled and held; a value of .25 means that every fourth sample will be sampled and held.
-###bitcrusher.bitCrusher###
+### bitcrusher.bitCrusher ###
 *float* range:0-1, default: .5. Decreases the dynamic range of the incoming signal and truncates values outside of the range.
 
 BufferShuffler
@@ -732,21 +733,21 @@ shuffle = Gibberish.fx.Shuffler({
 }).connect()
 ```
 
-####Properties####
-###shuffler.rate###
+#### Properties ####
+### shuffler.rate ###
 *int* Default:22050. Determines how often the shuffler should potentially shuffle. 
-###shuffler.chance###
+### shuffler.chance ###
 *float* Default:.25. The likelihood that shuffling will occur for any given window.
 *int* Default:22050. Determines how often the shuffler should potentially shuffle. 
-###shuffler.reverseChance###
+### shuffler.reverseChance ###
 *float* Default:.5. The likelihood that the buffer will play in reverse when it is shuffling.
-###shuffler.repitchChance###
+### shuffler.repitchChance ###
 *float* Default:.5. The likelihood that the buffer will play at a speed that isn't `1` (or `-1` if `reverseChance` is greater than `0`).
-###shuffler.repitchMin###
+### shuffler.repitchMin ###
 *float* Default:.5. The minimum rate for buffer playback if repitching occurs.
-###shuffler.repitchMax###
+### shuffler.repitchMax ###
 *float* Default:2. The maximum rate for buffer playback if repitching occurs.
-###shuffler.mix###
+### shuffler.mix ###
 *float* Default:.5. The mix between the dry and wet signal. a value of`0` means only the dry signal is outputted, a value of `1` means only the wet signal is outputted.
 
 Chorus
@@ -778,16 +779,16 @@ kick = Kick().connect()
 kickseq = Sequencer.make( [110], [22050], kick, 'note' ).start()
 ```
 
-####Properties####
-###chorus.input###
+#### Properties ####
+### chorus.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###chorus.slowFrequency###
+### chorus.slowFrequency ###
 *float* Default: .18. The frequency of the phasor that modulates the read position of the three 'slow' delay lines, which create more gradual pitch fluctuations over time.
-###chorus.slowAmp###
+### chorus.slowAmp ###
 *float* Default: 1. Controls the amount of delay line modulation for the three 'slow' delay lines.
-###chorus.fastFrequency###
+### chorus.fastFrequency ###
 *float* Default: .18. The frequency of the phasor that modulates the read position of the three 'fast' delay lines, which combine to create a vibrato effect. 
-###chorus.fastAmp###
+### chorus.fastAmp ###
 *float* Default: 1. Controls the amount of delay line modulation for the three 'fast' delay lines.
 
 Delay
@@ -808,14 +809,14 @@ delay = Gibberish.effects.Delay({
 syn.note( 220 )
 ```
 
-####Properties####
-###delay.input###
+#### Properties ####
+### delay.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###delay.delayTime###
+### delay.delayTime ###
 *int* default: 11025. The number of samples to delay the incoming signal by.
-###delay.feedback###
+### delay.feedback ###
 *float* range:0-1, default: .925. The amount of delayed signal to be fed back into the delay line.
-###delay.wetdry###
+### delay.wetdry ###
 *float* range:0-1, default: .5. The ratio of immediate to delayed signal in the output. A value of `1` means only the delayed output is heard. 
  
 Distortion
@@ -839,16 +840,16 @@ dist = Gibberish.effects.Distortion({
 syn.note( 440 )
 ```
 
-####Properties####
-###distortion.input###
+#### Properties ####
+### distortion.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect. 
-###distortion.pregain###
+### distortion.pregain ###
 *float* range: 0-max, default: 5. A scalar applied to the input signal as part of the distortion formula. Increasing this value will increase the amount of distortion; however, you may also need to turn down the `postgain` property to avoid loud signals.  
-###distortion.postgain###
+### distortion.postgain ###
 *float* range:0-max, default: .5. A scalar applied to the output signal. 
-###distortion.shape1###
+### distortion.shape1 ###
 *float* range:0-max, default: 0. A zero-value indicates hard-clipping will be used on the positive axis of the waveshaping; small positive values will use soft-clipping. 
-###distortion.shape2###
+### distortion.shape2 ###
 *float* range:0-max, default: 0. A zero-value indicates hard-clipping will be used on the negative axis of the waveshaping; small positive values will use soft-clipping. 
 
 Flanger
@@ -869,14 +870,14 @@ delay = Gibberish.effects.Flanger({
 syn.note( 220 )
 ```
 
-####Properties####
-###flanger.input###
+#### Properties ####
+### flanger.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###flanger.frequency###
+### flanger.frequency ###
 *ugen* The frequency of the sine oscillator that modulates the read position of the delay line.
-###flanger.offset###
+### flanger.offset ###
 *float* range: 0-1, default: .25. Controls the center offset of the modulated delay line. Larger values will result in wider pitch fluctuations.
-###flanger.feedback###
+### flanger.feedback ###
 *float* range:0-1, default: .925. The amount of delayed signal to be fed back into the delay line.
 
 Freeverb
@@ -896,18 +897,18 @@ verb = Gibberish.effects.Freeverb({
 syn.note( 220 )
 ```
 
-####Properties####
-###freeverb.input###
+#### Properties ####
+### freeverb.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###freeverb.roomSize###
+### freeverb.roomSize ###
 *float* range: 0-1, default: .84. This is an important control of the overall reverberation time. Technically, it controls the amount of feedback used by the comb filters that are part of the Freeverb algorithm.
-###freeverb.damping###
+### freeverb.damping ###
 *float* range:0-1, default: .5. This value attenuates high-frequency signals in the reverberation by low-pass filtering from one sample to the next in the comb filters. Low values simulate reflective walls.
-###freeverb.dry###
+### freeverb.dry ###
 *float* range: 0-1, default: .5. Controls the amount of non-reverberated signal sent to the output.
-###freeverb.wet1###
+### freeverb.wet1 ###
 *float* range: 0-1, default: 1. Controls the amount of reverberated signal sent to the left output. When this value is significantly different from the `wet2` property, there will be an increased stereo result. `wet1` and `wet2` default to opposite values to maximize this stereo effect.
-###freeverb.wet2###
+### freeverb.wet2 ###
 *float* range: 0-1, default: 0. Controls the amount of non-reverberated signal sent to the right output. See `wet1` for more information.
 
 Plate
@@ -927,24 +928,24 @@ plate = Gibberish.effects.Plate({
 syn.note( 220 )
 ```
 
-####Properties####
-###plate.input###
+#### Properties ####
+### plate.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###plate.decay###
+### plate.decay ###
 *float* range: 0-1, default: .5. This is an important control of the overall reverberation time. 
-###plate.damping###
+### plate.damping ###
 *float* range:0-1, default: .5. This value attenuates high-frequency signals in the reverberation by low-pass filtering from one sample to the next. Low values simulate reflective walls.
-###freeverb.drywet###
+### freeverb.drywet ###
 *float* range: 0-1, default: .5. Controls the amount of non-reverberated signal sent to the output.
-###plate.predelay###
+### plate.predelay ###
 *float* range: 0-100, default: 10. The amount of time between the input signal entering the reverb and the processed result exiting. This is also an effective cue in determining roomsize. Note that values over 100 risk sonic destruction (really, don't do this!)
-###plate.indiffusion1###
+### plate.indiffusion1 ###
 *float* range: 0-1, default: .75. Smears the phase of the input signal by controlling feedback during the first two of four all-pass filters.
-###plate.indiffusion2###
+### plate.indiffusion2 ###
 *float* range: 0-1, default: .625. Smears the phase of the input signal by controlling feedback during the last two of four all-pass filters.
-###plate.decaydiffusion1###
+### plate.decaydiffusion1 ###
 *float* range: 0-1, default: .7. Controls when diffusion occurs relative to signal onset in the 'tank' emulation of the reverb.
-###plate.decaydiffusion2###
+### plate.decaydiffusion2 ###
 *float* range: 0-1, default: .5. Controls when diffusion occurs relative to signal onset in the 'tank' emulation of the reverb.
 
 RingMod
@@ -966,14 +967,14 @@ ringmod = Gibberish.effects.RingMod({
 syn.note( 466 )
 ```
 
-####Properties####
-###ringmod.input###
+#### Properties ####
+### ringmod.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###ringmod.frequency###
+### ringmod.frequency ###
 *ugen* The frequency of the modulating sine oscillator.
-###ringmod.gain###
+### ringmod.gain ###
 *float* range: 0-1, default: 1. Amplitude of the modulating sine oscillator.
-###ringmod.mix###
+### ringmod.mix ###
 *float* range:0-1, default: .5. Controls the balance between wet and dry signals. A value of `0` means only the input will be outputted. A value of `1` means only the processed, modulated signal will be outputted.
 
 Tremolo
@@ -994,14 +995,14 @@ tremolo = Gibberish.effects.Tremolo({
 syn.note( 330 )
 ```
 
-####Properties####
-###tremolo.input###
+#### Properties ####
+### tremolo.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###tremolo.frequency###
+### tremolo.frequency ###
 *float* default: 4. The frequency of the modulating oscillator.
-###tremolo.amount###
+### tremolo.amount ###
 *float* range: 0-1, default: 1. The strength of the modulation. Given an output of y, an input of x, and a modulating oscillator z, the formula is `y = x - ( x * z )`. The `amount` property determines the amplitude of the modulating oscillator.  
-###tremolo.shape###
+### tremolo.shape ###
 *string* default: 'sine'. Possible values are 'sine', 'saw', and 'square'.
 
 Vibrato
@@ -1021,15 +1022,15 @@ vibrato = Gibberish.effects.Vibrato({
 syn.note( 330 )
 ```
 
-####Properties####
-###vibrato.input###
+#### Properties ####
+### vibrato.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###vibrato.frequency###
+### vibrato.frequency ###
 *float* default:4. The frequency of the modulating oscillator.
-###vibrato.amount###
+### vibrato.amount ###
 *float* range: 0-1, default: .25. The strength of the modulation.   
 
-#Envelopes
+# Envelopes
 
 AD
 ---
@@ -1048,14 +1049,14 @@ Gibberish.output.inputs.push( c )
 b.trigger()
 ```
 
-####Methods####
-###ad.trigger###
+#### Methods ####
+### ad.trigger ###
 Tell the envelope to run and reset its internal phase to 0.
 
-####Properties####
-###ad.attack###
+#### Properties ####
+### ad.attack ###
 *int* or *ugen*. Default:44100. The length of the attack stage, in samples.
-###ad.decay###
+### ad.decay ###
 *int* or *ugen*. Default:44100. The length of the decay stage, in samples.
 
 ADSR
@@ -1064,24 +1065,24 @@ ADSR
 
 A four-stage envelope using exponential attack, decay, and release stages.
 
-####Methods####
-###adsr.trigger###
+#### Methods ####
+### adsr.trigger ###
 Tell the envelope to run and reset its internal phase to 0.
-###adsr.advance###
+### adsr.advance ###
 If the `triggerRelease` property of the envelope is set to `true`, than this method will advance from the sustain stage of the envelope to the release stage.
 
-####Properties####
-###adsr.attack###
+#### Properties ####
+### adsr.attack ###
 *int* or *ugen*. Default:22050. The length of the attack stage, in samples.
-###adsr.decay###
+### adsr.decay ###
 *int* or *ugen*. Default:22050. The length of the decay stage, in samples.
-###adsr.sustain###
+### adsr.sustain ###
 *int* or *ugen*. Default:44100. The length of the sustain stage, in samples. Note this property is only used if the `triggerRelease` property is set to false; that is, if the envelope plays from start to finish without requiring intervention.
-###adsr.sustainLevel###
+### adsr.sustainLevel ###
 *float* or *ugen*. Default:.6. The gain of the sustain stage.
-###adsr.release###
+### adsr.release ###
 *int* or *ugen*. Default:44100. The length of the release stage, in samples.
-###adsr.triggerRelease###
+### adsr.triggerRelease ###
 *boolean*. Default:false. If true, the envelope will not advance from the sustain stage to the release stage without a call to the `advance()` method.
 
 Ramp
@@ -1094,22 +1095,22 @@ A linear ramp between two values that can loop.
 a = Sine().connect()
 a.frequency = Ramp({ from:220, to:440, length:22050, shouldLoop:true })
 ```
-####Methods####
-###ramp.trigger###
+#### Methods ####
+### ramp.trigger ###
 Tell the ramp to run and reset its internal phase to 0.
 
-####Properties####
-###ramp.from###
+#### Properties ####
+### ramp.from ###
 *int* or *ugen*. Default:0. The starting point of the ramp.
-###ramp.to###
+### ramp.to ###
 *int* or *ugen*. Default:1. The ending point of the ramp.
-###ramp.length###
+### ramp.length ###
 *int( or *ugen*. Default:44100. The length of the ramp.
-###ramp.shouldLoop###
+### ramp.shouldLoop ###
 *boolean*. Default: false. If this property is `true` playback of the ramp will loop repeatedly.
 
 
-#Filters
+# Filters
 Filter12Biquad
 ----
 *Prototype: [Gibberish.prototypes.filter](#prototypes-filter)*
@@ -1129,14 +1130,14 @@ filter = Gibberish.filters.Filter12Biquad({
 syn.note( 220 )
 ```
 
-####Properties####
-###filter12Biquad.input###
+#### Properties ####
+### filter12Biquad.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###filter12Biquad.cutoff###
+### filter12Biquad.cutoff ###
 *float* range: 0-1, default:.05. The cutoff frequency of the filter. 
-###filter12Biquad.Q###
+### filter12Biquad.Q ###
 *float* range: 0–1, default: .15. Controls the resonance, or 'quality' of the filter. 
-###filter12Biquad.mode###
+### filter12Biquad.mode ###
 *int* default: 0. 0 = lowpass, 1 = highpass, 2 = bandpass, 3 = notch.
 
 Filter12SVF
@@ -1158,14 +1159,14 @@ filter = Gibberish.filters.Filter12SVF({
 syn.note( 220 )
 ```
 
-####Properties####
-###filter12SVF.input###
+#### Properties ####
+### filter12SVF.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###filter12SVG.cutoff###
+### filter12SVG.cutoff ###
 *float* range: 0-1, default:.05. The cutoff frequency of the filter. 
-###filter12SVF.Q###
+### filter12SVF.Q ###
 *float* range: 0–1, default: .15. Controls the resonance, or 'quality' of the filter. 
-###filter12SVF.mode###
+### filter12SVF.mode ###
 *int* default: 0. 0 = lowpass, 1 = hipass, 2 = bandpass.
 
 Filter24Classic
@@ -1186,14 +1187,14 @@ filter = Gibberish.filters.Filter24Classic({
 syn.note( 220 )
 ```
 
-####Properties####
-###filter24Classic.input###
+#### Properties ####
+### filter24Classic.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###filter24Classic.cutoff###
+### filter24Classic.cutoff ###
 *float* range: 0-1, default:.05. The cutoff frequency of the filter. 
-###filter24Classic.Q###
+### filter24Classic.Q ###
 *float* range: 0–1, default: .15. Controls the resonance, or 'quality' of the filter. 
-###filter24Classic.mode###
+### filter24Classic.mode ###
 *int* default: 0. 0 = lowpass, 1 = hipass, 2 = bandpass.
 
 Filter24Moog
@@ -1214,12 +1215,12 @@ filter = Gibberish.filters.Filter24Moog({
 syn.note( 220 )
 ```
 
-####Properties####
-###filter24Moog.input###
+#### Properties ####
+### filter24Moog.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###filter24Moog.cutoff###
+### filter24Moog.cutoff ###
 *float* range: 0-1, default:.05. The cutoff frequency of the filter. 
-###filter24Moog.Q###
+### filter24Moog.Q ###
 *float* range: 0–1, default: .15. Controls the resonance, or 'quality' of the filter. 
 
 Filter24TB303
@@ -1240,17 +1241,17 @@ filter = Gibberish.filters.Filter24TB303({
 syn.note( 220 )
 ```
 
-####Properties####
-###filter24TB303.input###
+#### Properties ####
+### filter24TB303.input ###
 *ugen* The unit generator that feeds the effect. Assign a `Bus` or `Bus2` instance to this property if you want multiple unit generators to connect to this effect.
-###filter24TB303.cutoff###
+### filter24TB303.cutoff ###
 *float* range: 0-1, default:.05. The cutoff frequency of the filter. 
-###filter24TB303.Q###
+### filter24TB303.Q ###
 *float* range: 0–1, default: .15. Controls the resonance, or 'quality' of the filter.
-###filter24TB303.saturation###
+### filter24TB303.saturation ###
 *float* range: 1-?, default: 1. Values higher than one add non-linear waveshaping to the signal before it is filtered, creating distortion.
 
-#Miscellaneous
+# Miscellaneous
 
 Bus
 ---
@@ -1258,7 +1259,7 @@ Bus
 
 `Bus` instances sum mono inputs.
 
-###bus.disconnecUgen###
+### bus.disconnecUgen ###
 **ugen** &nbsp; *ugen* &nbsp; The ugen to disconnect from the bus
 
 Bus2
@@ -1267,7 +1268,7 @@ Bus2
 
 `Bus2` instances sum stereo and mono inputs into a single stereo signal.
 
-###bus2.disconnecUgen###
+### bus2.disconnecUgen ###
 **ugen** &nbsp; *ugen* &nbsp; The ugen to disconnect from the bus.
 
 SSD
@@ -1302,17 +1303,17 @@ return v_20
 
 You can see how the SSD listens to the sine oscillator output on the last line before the return statement, but also functions as an input that helps determine the oscillator frequency. A demo exploring more complicated uses of the SSD ugen is included in the Gibberish playground.
 
-###ssd.listen###
+### ssd.listen ###
 **ugen** &nbsp; *ugen* &nbsp; Set the ugen to listen to. 
 
-####Properties####
-###ssd.out###
+#### Properties ####
+### ssd.out ###
 *ugen*. Read-only. The output of the single-sample delay.
 
-###ssd.isStereo###
+### ssd.isStereo ###
 *boolean* Default:false. Can only be set on initialization, and determines whether or not the SSD will listen to a stereo or a mono unit generator.
  
-#Oscillators
+# Oscillators
 
 All oscillators accept a dictionary as their sole argument, containing properties such as frequency and gain.
 
@@ -1322,10 +1323,10 @@ Noise
 
 There are three types of noise available, `white`, `brown`, and `pink`, as determined by the `color` property upon initialization.
 
-####Properties####
-###noise.color###
+#### Properties ####
+### noise.color ###
 *string*. Default:'white'. Can only be set on initialization. Determines the type of noise outputted.
-###noise.gain###
+### noise.gain ###
 *number* or *ugen*. Default:1. A scalar to adjust the output range of the oscillator.
 
 PWM
@@ -1334,14 +1335,14 @@ PWM
 
 The PWM (pulse-width modulation) oscillator provides for a variable pulsewidth to modulate the harmonic content of the oscillator. If the anti-alias property is set to true, a band-limited oscillator implemented via FM feedback is used. 
 
-####Properties####
-###pwm.frequency###
+#### Properties ####
+### pwm.frequency ###
 *number* or *ugen*. Default:440. The frequency in Hz that the oscillator runs at.
-###pwm.gain###
+### pwm.gain ###
 *number* or *ugen*. Default:1. A scalar to adjust the output range of the oscillator.
-###pwm.antialias###
+### pwm.antialias ###
 *boolean* Default:false. If true, the oscillator will use a higher-quality bandlimited algorithm. If false, the oscillator will use a wavetable with linear interpolation. This property can only be set during the initial call to the constructor.
-###pwm.pulsewidth###
+### pwm.pulsewidth ###
 *float* Default:.35. A value of .5 means that the oscillator will function as a square wave; higher or lower values will decrease the duty cycle of the oscillator, gradually lowering amplitude while increasing harmonic content.
  
 ReverseSaw
@@ -1350,12 +1351,12 @@ ReverseSaw
 
 The ReverseSaw oscillator uses either a wavetable with linear interpolation, or, if the anti-alias property is set to true, a band-limited oscillator implemented via FM feedback. 
 
-####Properties####
-###saw.frequency###
+#### Properties ####
+### saw.frequency ###
 *number* or *ugen*. Default:440. The frequency in Hz that the oscillator runs at.
-###saw.gain###
+### saw.gain ###
 *number* or *ugen*. Default:1. A scalar to adjust the output range of the oscillator.
-###saw.antialias###
+### saw.antialias ###
 *boolean* Default:false. If true, the oscillator will use a higher-quality bandlimited algorithm. If false, the oscillator will use a wavetable with linear interpolation. This property can only be set during the initial call to the constructor. 
 
 Saw
@@ -1364,12 +1365,12 @@ Saw
 
 The saw oscillator uses either a wavetable with linear interpolation, or, if the anti-alias property is set to true, a band-limited oscillator implemented via FM feedback. 
 
-####Properties####
-###saw.frequency###
+#### Properties ####
+### saw.frequency ###
 *number* or *ugen*. Default:440. The frequency in Hz that the oscillator runs at.
-###saw.gain###
+### saw.gain ###
 *number* or *ugen*. Default:1. A scalar to adjust the output range of the oscillator.
-###saw.antialias###
+### saw.antialias ###
 *boolean* Default:false. If true, the oscillator will use a higher-quality bandlimited algorithm. If false, the oscillator will use a wavetable with linear interpolation. This property can only be set during the initial call to the constructor. 
 
 Sine
@@ -1378,10 +1379,10 @@ Sine
 
 The sine oscillator uses a wavetable with linear interpolation.
 
-####Properties####
-###sine.frequency###
+#### Properties ####
+### sine.frequency ###
 *number* or *ugen*. Default:440. The frequency in Hz that the oscillator runs at.
-###sine.gain###
+### sine.gain ###
 *number* or *ugen*. Default:1. A scalar to adjust the output range of the oscillator.
 
 Square
@@ -1390,12 +1391,12 @@ Square
 
 The square oscillator uses either a wavetable with linear interpolation, or, if the anti-alias property is set to true, a band-limited oscillator implemented via FM feedback. 
 
-####Properties####
-###square.frequency###
+#### Properties ####
+### square.frequency ###
 *number* or *ugen*. Default:440. The frequency in Hz that the oscillator runs at.
-###square.gain###
+### square.gain ###
 *number* or *ugen*. Default:1. A scalar to adjust the output range of the oscillator.
-###square.antialias###
+### square.antialias ###
 *boolean* Default:false. If true, the oscillator will use a higher-quality bandlimited algorithm. If false, the oscillator will use a wavetable with linear interpolation. This property can only be set during the initial call to the constructor. 
 
 Triangle
@@ -1404,20 +1405,20 @@ Triangle
 
 The triangle oscillator uses a wavetable with linear interpolation
 
-####Properties####
-###triangle.frequency###
+#### Properties ####
+### triangle.frequency ###
 *number* or *ugen*. Default:440. The frequency in Hz that the oscillator runs at.
-###triangle.gain###
+### triangle.gain ###
 *number* or *ugen*. Default:1. A scalar to adjust the output range of the oscillator.
 
-#Scheduling
+# Scheduling
 
 Scheduler
 ---
 This is a singleton object (`Gibberish.Scheduler`) with a priority queue that handles events from all [Sequencer objects](#scheduling-sequencer) (but not Sequencer2 objects). In general, users should never need to think about / manipulate this object, with the possible exception of calls to `Gibberish.Scheduler.add()`.
 
-####Methods####
-###scheduler.add###
+#### Methods ####
+### scheduler.add ###
 Add a new event to the priority queue.
 
 **time** &nbsp; *int* &nbsp; A time offset, measured in samples, from the current phase of the scheduler determining when the added event should fire. A time value of 0 means the function will be executed immediately.
@@ -1426,16 +1427,16 @@ Add a new event to the priority queue.
 
 **priority** &nbsp; *int* &nbsp; Default: 0. If two events in the queue are scheduled to be executed at the same time, the event with the higher priority value will be executed first.
 
-###scheduler.clear###
+### scheduler.clear ###
 Remove all items from the scheduler's priority queue. This method is called internally by `Gibberish.clear()`.
 
-###scheduler.tick###
+### scheduler.tick ###
 This method is called once per sample and checks the priortiy queue to see if any of its events should be fired.
 
-####Properties####
-###scheduler.phase###
+#### Properties ####
+### scheduler.phase ###
 *int* The internal phase of the scheduler, incremented by a value of 1 on every sample.
-###scheduler.queue###
+### scheduler.queue ###
 *object* The priority queue used by the scheduler, as taken from https://github.com/antimatter15/heapqueue.js/blob/master/heapqueue.js.
 
 Sequencer
@@ -1456,26 +1457,26 @@ seq = Gibberish.Sequencer({
   timings: [11025, 22050 ],
 }).start()
 ```
-####Methods####
-###sequencer.start###
+#### Methods ####
+### sequencer.start ###
 Starts the sequencer running. By default the sequencer starts immediately, but can be started in the future by passing an optional *delay* argument.
 
 ***delay*** &nbsp; *float* &nbsp; Default:0. This values delays the start of the sequencer by a given number of samples. You can use this to start a number of sequencers using the same block of code, but with different timings offsets.
 
-###sequencer.stop###
+### sequencer.stop ###
 Stops the sequencer from running.
 
 Remove all items from the scheduler's priority queue. This method is called internally by `Gibberish.clear()`.
-####Properties####
-###sequencer.key###
+#### Properties ####
+### sequencer.key ###
 *string* Whenever a sequencer event is triggered, the sequencer will check to see if it has a valid *target* property; if so, it checks for a valid *key* property. The key determines the name of property or method on the target object that will be controlled by sequencer. If the target/key combo denotes a method, that method will be called. If the target/key combo denotes a property, that property will be assigned a new value. 
-###sequencer.priority###
+### sequencer.priority ###
 *int* default: 0. If two events are scheduled to take place on the same sample, the event scheduled by the sequencer with the highest *priority* will take place first. For example, if you wanted to change the key of a scale being used and also trigger a new note using the resulting scale on the same sample, you would assign the sequencer changing the key of the scale a higher priority value so that it would be changed before the final note value was determined.
-###sequencer.target###
+### sequencer.target ###
 *object* A object to be targeted by the sequencer. See the *key* property for more information.
-###sequencer.timings###
+### sequencer.timings ###
 *array* This array is used to determine when sequencer events are triggered. If a timing is chosen from the array that is a function, that function will be executed and expected to return a new timing value to be used. 
-###sequencer.values###
+### sequencer.values ###
 *array* Assuming the sequencer has a valid target/key combination, this array holds values that will either be passed as arguments to a method or assigned to properties. If a value is chosen from the array and it is a function, that function will be evaluated to and expected to return a new value that will be assigned or passed as an argument. For example, a values array that will always return a random number might look like the following:
 
 ```javascript
@@ -1500,25 +1501,25 @@ seq = Gibberish.Sequencer2({
   )
 }).start()
 ```
-####Methods####
-###sequencer2.start###
+#### Methods ####
+### sequencer2.start ###
 Starts the sequencer running. By default the sequencer starts immediately, but can be started in the future by passing an optional *delay* argument.
 
 ***delay*** &nbsp; *float* &nbsp; Default:0. This values delays the start of the sequencer by a given number of samples. You can use this to start a number of sequencers using the same block of code, but with different timings offsets.
 
-###sequencer2.stop###
+### sequencer2.stop ###
 Stops the sequencer from running.
 
-####Properties####
-###sequencer2.key###
+#### Properties ####
+### sequencer2.key ###
 *string* Whenever a sequencer event is triggered, the sequencer will check to see if it has a valid *target* property; if so, it checks for a valid *key* property. The key determines the name of property or method on the target object that will be controlled by sequencer. If the target/key combo denotes a method, that method will be called. If the target/key combo denotes a property, that property will be assigned a new value. 
-###sequencer2.rate###
+### sequencer2.rate ###
 *float* or *ugen*. Default: 1. The rate property is an audio-rate input that determines the phase increment of the sequencer on each sample. A value of `2` means that the phase is incremented by two each sample, doubling the speed that events are outputted at. Any mono audio signal can be mapped to this property.
-###sequencer2.target###
+### sequencer2.target ###
 *object* A object to be targeted by the sequencer. See the *key* property for more information.
-###sequencer2.timings###
+### sequencer2.timings ###
 *array* This array is used to determine when sequencer events are triggered. If a timing is chosen from the array that is a function, that function will be executed and expected to return a new timing value to be used. The values in this array are used in conjunction with the *rate* property to determine the final scheduling of events. 
-###sequencer2.values###
+### sequencer2.values ###
 *array* Assuming the sequencer has a valid target/key combination, this array holds values that will either be passed as arguments to a method or assigned to properties. If a value is chosen from the array and it is a function, that function will be evaluated to and expected to return a new value that will be assigned or passed as an argument. For example, a values array that will always return a random number might look like the following:
 
 ```javascript
@@ -1621,9 +1622,9 @@ tracker = Follow({ input: trackedUgen })
 Sine({ frequency:Add( 440, Mul( tracker,220 ) ), gain:.25 }).connect()
 ```
 
-####Properties####
-###follow.input###
+#### Properties ####
+### follow.input ###
 *ugen*. The unit generator that will be tracked. 
-###follow.bufferSize###
+### follow.bufferSize ###
 *number* Default:8192. *Set on initialization only*. The length of the buffer over which averaging occurs. Longer buffers will result in smoother signals, while shorter buffers will respond more quickly to changes in the tracked ugen output.
 
